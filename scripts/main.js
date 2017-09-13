@@ -2,6 +2,45 @@
 // document.getElementById
 // Find just the title
 var title = document.getElementById('title')
+// Adding an event listener (ie a thing that will happen)
+// to the title, listening for a 'click' and when it hears it,
+// it will then do the function thing.
+const colors = ['orangered', 'orange', 'yellow', 'limegreen', 'skyblue', 'pink']
+let index = 0;
+title.addEventListener('click', (e) => {
+  title.style.color = colors[index++]
+  if(index >= colors.length) index = 0
+})
+
+const lis = document.querySelectorAll('li')
+
+lis.forEach(item => {
+  item.addEventListener('click', e => {
+    item.classList.toggle('selected')
+    updateSelectedList()
+  })
+})
+
+function updateSelectedList() {
+  const selectedList = document.querySelectorAll('.selected')
+  if(selectedList.length === 0) {
+    document.querySelector('span').textContent = 'Nothing is selected yet.'
+  } else {
+    let list = "<ul>"
+    selectedList.forEach(item => {
+      list += `<li>${item.textContent}</li>`
+    })
+    list += "</ul>"
+    document.querySelector('span').innerHTML = list
+  }
+
+}
+
+// let menu = document.querySelector('.menu')
+// menu.addEventListener('click', e => {
+//   console.log(e.target)
+//   e.target.classList.toggle('selected-items')
+// }, false)
 // Change the text of the title
 // - Choose Your Magical Ingredients
 title.textContent = 'Choose Your Magical Ingredients'

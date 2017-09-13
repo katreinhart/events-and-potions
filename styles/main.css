@@ -31,8 +31,9 @@ body {
   margin: 2rem 0;
 }
 
-.selected-items {
-  margin-bottom: 2rem;
+.menu li.selected {
+  font-weight: bold;
+  color: orange;
 }
 
 .selected-items {
